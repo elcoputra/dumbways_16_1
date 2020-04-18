@@ -42,6 +42,5 @@ function hitungKembalian(totalBelanja, uangDiBerikan) {
     if (kembalian > 0) {console.log(kembalian + " Disumbangkan karena tidak ada pecahan dibawah 5000");}
 
 }
-let totalBelanja = 220000;
-let uangDiBerikan = 250000;
-hitungKembalian(totalBelanja, uangDiBerikan);
+
+hitungKembalian(220000, 250000);
