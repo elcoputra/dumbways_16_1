@@ -8,9 +8,11 @@ $dataKategori = mysqli_query($mysqli, "SELECT * FROM `categories` ORDER BY `cate
 // ambil data kategori olahan ayam
 $olahanAyam = mysqli_query($mysqli, "SELECT categories.name AS namaKategori, foods.image, foods.id AS foods_id, foods.deskripsi, foods.name, foods.stok FROM foods INNER JOIN categories on foods.category_id = categories.id WHERE categories.name = 'Olahan Ayam'");
 // ambil data kategori olahan ikan
-$olahanIkan = mysqli_query($mysqli, "SELECT categories.name AS namaKategori, foods.image, foods.deskripsi, foods.name, foods.stok FROM foods INNER JOIN categories on foods.category_id = categories.id WHERE categories.name = 'Olahan Ikan'");
+$olahanIkan = mysqli_query($mysqli, "SELECT categories.name AS namaKategori, foods.image, foods.id AS foods_id, foods.deskripsi, foods.name, foods.stok FROM foods INNER JOIN categories on foods.category_id = categories.id WHERE categories.name = 'Olahan Ikan'");
 // ambil data kategori olahan sayuran
+$olahSayuran = mysqli_query($mysqli, "SELECT categories.name AS namaKategori, foods.image, foods.id AS foods_id, foods.deskripsi, foods.name, foods.stok FROM foods INNER JOIN categories on foods.category_id = categories.id WHERE categories.name = 'Olahan Sayur'");
 // ambil data kategori minuman
+$Minuman = mysqli_query($mysqli, "SELECT categories.name AS namaKategori, foods.image, foods.id AS foods_id, foods.deskripsi, foods.name, foods.stok FROM foods INNER JOIN categories on foods.category_id = categories.id WHERE categories.name = 'Minuman'");
 
 ?>
 
@@ -79,6 +81,132 @@ $olahanIkan = mysqli_query($mysqli, "SELECT categories.name AS namaKategori, foo
     </div>
 
     <!-- end olahan ayam -->
+
+
+
+    <!-- Olahan Ikan -->
+    <div class="container">
+        <h3>Olahan Ikan</h3>
+    </div>
+
+    <div class="container">
+        <div class="card-deck">
+            <?php
+            while ($user_data = mysqli_fetch_array($olahanIkan)) {
+
+                echo "<div class=\"card\">";
+                echo "<img class=\"img-responsive\" style=\"margin: 0 auto; id=\"currentPhoto\" src=\"" . $user_data['image'] . "\" onerror=\"this.onerror=null; this.src='public/img/noimage.png'\" alt=\"\"width=\"120\">";
+
+                echo "<div class=\"card-body\">";
+                echo "<h5 class=\"card-title\">" . $user_data['name'] . "</h5>";
+                echo "<p class=\"card-text\">" . $user_data['deskripsi'] . "</p>";
+                echo "</div>";
+
+                echo "<div class=\"card-footer\">";
+
+                echo "<div class=\"d-flex bd-highlight\">";
+
+                echo "<div class=\"align-self-center mr-3\">";
+                echo "<h5>Stock : " . $user_data['stok'] . "</h5>";
+                echo "</div>";
+
+                echo "<div class=\"d-flex justify-content-start\">";
+                echo "<a class=\"btn btn-primary\" href='proses/beli.php?id=$user_data[foods_id]'>Beli</a>";
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            ?>
+        </div>
+    </div>
+
+    <!-- end olahan ikan -->
+
+    <!-- Olahan sayuran -->
+    <div class="container">
+        <h3>Olahan Sayuran</h3>
+    </div>
+
+    <div class="container">
+        <div class="card-deck">
+            <?php
+            while ($user_data = mysqli_fetch_array($olahSayuran)) {
+
+                echo "<div class=\"card\">";
+                echo "<img class=\"img-responsive\" style=\"margin: 0 auto; id=\"currentPhoto\" src=\"" . $user_data['image'] . "\" onerror=\"this.onerror=null; this.src='public/img/noimage.png'\" alt=\"\"width=\"120\">";
+
+                echo "<div class=\"card-body\">";
+                echo "<h5 class=\"card-title\">" . $user_data['name'] . "</h5>";
+                echo "<p class=\"card-text\">" . $user_data['deskripsi'] . "</p>";
+                echo "</div>";
+
+                echo "<div class=\"card-footer\">";
+
+                echo "<div class=\"d-flex bd-highlight\">";
+
+                echo "<div class=\"align-self-center mr-3\">";
+                echo "<h5>Stock : " . $user_data['stok'] . "</h5>";
+                echo "</div>";
+
+                echo "<div class=\"d-flex justify-content-start\">";
+                echo "<a class=\"btn btn-primary\" href='proses/beli.php?id=$user_data[foods_id]'>Beli</a>";
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            ?>
+        </div>
+    </div>
+
+    <!-- end olahan sayuran -->
+
+
+
+    <!-- Olahan Minuman -->
+    <div class="container">
+        <h3>Minuman</h3>
+    </div>
+
+    <div class="container">
+        <div class="card-deck">
+            <?php
+            while ($user_data = mysqli_fetch_array($Minuman)) {
+
+                echo "<div class=\"card\">";
+                echo "<img class=\"img-responsive\" style=\"margin: 0 auto; id=\"currentPhoto\" src=\"" . $user_data['image'] . "\" onerror=\"this.onerror=null; this.src='public/img/noimage.png'\" alt=\"\"width=\"120\">";
+
+                echo "<div class=\"card-body\">";
+                echo "<h5 class=\"card-title\">" . $user_data['name'] . "</h5>";
+                echo "<p class=\"card-text\">" . $user_data['deskripsi'] . "</p>";
+                echo "</div>";
+
+                echo "<div class=\"card-footer\">";
+
+                echo "<div class=\"d-flex bd-highlight\">";
+
+                echo "<div class=\"align-self-center mr-3\">";
+                echo "<h5>Stock : " . $user_data['stok'] . "</h5>";
+                echo "</div>";
+
+                echo "<div class=\"d-flex justify-content-start\">";
+                echo "<a class=\"btn btn-primary\" href='proses/beli.php?id=$user_data[foods_id]'>Beli</a>";
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            ?>
+        </div>
+    </div>
+
+    <!-- end olahan ayam -->
+
+
 
     <!-- Modal Tambah Makanan-->
     <div class="modal fade" id="tambahMakanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
