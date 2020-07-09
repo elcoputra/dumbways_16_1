@@ -60,8 +60,3 @@ INSERT INTO `categories` (`id`, `name`) VALUES (NULL, 'Minuman');
 
 #### Tambah Kategori
 ![crud3](https://raw.githubusercontent.com/elcoputra/dumbways_16_1/master/4b_Crud/Screenshoot%20CRUD%20WEB/web%20dw%20crud%203.png)
-
-
-
-
-# Terimakasih Banyak Mau Memeriksa Pekerjaan Saya :blush:
